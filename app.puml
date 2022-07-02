@@ -1,0 +1,97 @@
+@startuml stats-for-brett
+
+class User {
+    - username : String
+    - password : String
+    - email : String
+    - library : List<Game>
+}
+
+abstract class Match {
+    - id : int
+    - game : Game
+    - location: Location
+    - players : List<User>
+    - startTime : DateTime
+    - endTime : DateTime
+    - scoreboard : Map<int postion, List<User> users>
+
+    + getDuration() : Duration
+    + getWinners() :  List<User>
+}
+
+class VideogameMatch {
+    - plattform : Plattform
+}
+
+class BoardgameMatch {
+    - extensions : List<Boardgame>
+}
+
+class Group {
+    - id : int
+    - name : String
+    - members : List<User>
+    - events : List<Event>
+
+    + getLibrary() : List<Game>
+    + getMatches() : List<Match>
+}
+
+class Event {
+    - id : int
+    - date : Date
+    - location : Location
+    - players : List<User>
+    - matches : List<Match>
+}
+
+abstract class Game {
+    - id : int
+    - name : String
+    - publisher : String
+    - minPlayerCount : int
+    - maxPlayerCount : int
+    - avgPlaytime : int
+    - posterURI : URI
+    
+    + realAvgPlaytime() : int
+}
+
+class Videogame {
+    - plattform : VideogamePlattform
+}
+
+enum VideogamePlattform {
+    + XBOX
+    + PLAYSTATION
+    + SWITCH
+    + WINDOWS
+    + MOBILE
+    + VR
+}
+
+class Boardgame {
+    - boardgameType : BoardgameType
+}
+
+enum BoardgameType {
+    - BASE_GAME
+    - EXTENSION
+}
+
+User -- Group
+User -- Game
+
+Event -- Group
+Event -- User
+
+Videogame ..> Game
+Boardgame ..> Game
+
+Videogame -- VideogamePlattform
+VideogameMatch - VideogamePlattform
+BoardgameType -- Boardgame
+
+VideogameMatch ..> Match
+BoardgameMatch ..> Match
