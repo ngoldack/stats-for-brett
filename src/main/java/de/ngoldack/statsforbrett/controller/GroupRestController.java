@@ -1,6 +1,7 @@
 package de.ngoldack.statsforbrett.controller;
 
 import de.ngoldack.statsforbrett.dto.GroupDto;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("group")
+@Tag(name = "group", description = "queries around groups")
 public class GroupRestController {
     @GetMapping(path = "/", produces = "application/json")
     public ResponseEntity<List<GroupDto>> getGroups() {

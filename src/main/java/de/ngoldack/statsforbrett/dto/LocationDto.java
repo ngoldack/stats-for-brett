@@ -9,6 +9,6 @@ import lombok.Data;
 public class LocationDto {
     @JsonProperty("id")
     private String id;
-    @JsonProperty("name")
+    @JsonProperty(value = "name", required = true)
     private String name;
 }

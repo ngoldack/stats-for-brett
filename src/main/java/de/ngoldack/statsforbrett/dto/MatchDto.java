@@ -17,9 +17,9 @@ public abstract class MatchDto {
     private LocationDto location;
     @JsonProperty(value = "users", required = true)
     private List<UserDto> users;
-    @JsonProperty(value = "startTime", required = true)
+    @JsonProperty(value = "start_time", required = true)
     private LocalDateTime startTime;
-    @JsonProperty("endTime")
+    @JsonProperty("end_time")
     private LocalDateTime endTime;
     @JsonProperty("scoreboard")
     private Map<Integer, Map<UserDto, Double>> scoreboard;

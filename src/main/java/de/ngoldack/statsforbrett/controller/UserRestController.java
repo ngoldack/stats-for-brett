@@ -1,6 +1,7 @@
 package de.ngoldack.statsforbrett.controller;
 
 import de.ngoldack.statsforbrett.dto.UserDto;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("user")
+@Tag(name = "user", description = "queries around users")
 public class UserRestController {
     @GetMapping(path = "/", produces = "application/json")
     public ResponseEntity<List<UserDto>> getUsers() {

@@ -8,8 +8,8 @@ import lombok.EqualsAndHashCode;
 
 import javax.validation.constraints.NotNull;
 
-@EqualsAndHashCode(callSuper = true)
 @Data
+@EqualsAndHashCode(callSuper = true)
 @Builder
 public class BoardgameDto extends GameDto {
     @NotNull

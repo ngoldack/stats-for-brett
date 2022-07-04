@@ -20,8 +20,8 @@ public class UserDto {
     @NotEmpty
     @JsonProperty(value = "email", required = true)
     private String email;
-    @JsonProperty
+    @JsonProperty(value = "user_type", required = true)
     private UserType userType;
-    @JsonProperty
+    @JsonProperty("associated_guests")
     private List<UserDto> associatedGuests;
 }
