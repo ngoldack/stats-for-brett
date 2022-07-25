@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class SpringDocConfig {
     @Bean
-    public OpenAPI dunkelweicheOpenAPI() {
+    public OpenAPI statsforbrettOpenApi() {
         return new OpenAPI()
                 .info(new Info().title("stats-for-brett")
                         .description("stats-for-brett REST-API")
