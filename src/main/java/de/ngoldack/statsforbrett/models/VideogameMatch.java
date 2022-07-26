@@ -1,19 +1,17 @@
 package de.ngoldack.statsforbrett.models;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
-public class VideogameMatch extends Match{
-    // instance variables
-    VideogamePlattform plattform;
+import javax.persistence.Column;
+import javax.persistence.Entity;
 
-    //constructor
-    public VideogameMatch(int id, Game game, String location, ArrayList<User> players, HashMap<Integer, ArrayList> scoreboard, VideogamePlattform plattform){
-        super(id, game, location, players, scoreboard);
-        this.plattform = plattform;
-    }
-
-
-    //methods
-
+@Data
+@NoArgsConstructor
+@EqualsAndHashCode(callSuper = true)
+@Entity(name = "videogame_matches")
+public class VideogameMatch extends Match {
+    @Column(name = "plattform")
+    private VideogamePlattform plattform;
 }

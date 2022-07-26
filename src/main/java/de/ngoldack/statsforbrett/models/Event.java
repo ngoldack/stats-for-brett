@@ -1,27 +1,24 @@
 package de.ngoldack.statsforbrett.models;
-import java.util.ArrayList;
-import java.util.Date;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import java.util.Date;
+import java.util.List;
+
+@Data
+@NoArgsConstructor
+@Entity(name = "events")
 public class Event {
-    //instance variables
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private String id;
     private Date date;
     private String location;
-    private ArrayList<User> players;
-    private ArrayList<Match> matches;
-
-
-    //constructor
-    public Event(int id,String location;  ArrayList<User> players, ArrayList<Match> matches){
-        this.id = id;
-        this.location = location;
-        this.date = new Date();     //gets current time and date
-        this.players = players;
-        this.matches = matches;
-    }
-
-    //methods
-    public ArrayList<Match> getMatches(){
-        return this.matches;
-    }
+    private List<User> players;
+    private List<Match> matches;
 }

@@ -1,115 +1,31 @@
 package de.ngoldack.statsforbrett.models;
 
+import lombok.Data;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.net.URI;
 
+@Data
 public abstract class Game {
-    //instances
-    /**
-     * the specific id of the game
-     */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
-
-    /**
-     * the specific name of the game
-     */
+    @Column(name = "name", nullable = false)
     private String name;
-
-    /**
-     * the publisher of the game
-     */
+    @Column(name = "publisher")
     private String publisher;
-
-    /**
-     * minimal amount of players required to play a match
-     */
+    @Column(name = "min_player_count")
     private int minPlayerCount;
-
-    /**
-     * maximal amount of players allowed to play a match
-     */
+    @Column(name = "max_player_count")
     private int maxPlayerCount;
-
-    /**
-     * the average playtime of a match
-     * official value from publisher
-     */
+    @Column(name = "avg_playtime")
     private int avgPlaytime;
-
-    /**
-     * a poster of the game
-     */
+    @Column(name = "poster_uri")
     private URI posterURI;
 
-    //constructors
-
-    /**
-     * creates an instance of the Game class
-     * used when all instance variables are known
-     * @param id
-     * @param name
-     * @param publisher
-     * @param minPlayerCount
-     * @param maxPlayerCount
-     * @param posterURI
-     */
-    protected Game(String id, String name, String publisher, int minPlayerCount, int maxPlayerCount, String posterURI){
-        this.id = id;
-        this.name = name;
-        this.publisher = publisher;
-        this.minPlayerCount = minPlayerCount;
-        this.maxPlayerCount = maxPlayerCount;
-        this.posterURI = new URI(posterURI);
+    protected Game() {
     }
-
-    //methods
-    //getters and setters
-    public void setId(String Id) {
-        this.id = id;
-    }
-    public String getId(){
-        return this.id;
-    }
-
-    public void setName(String name){
-        this.name = name;
-    }
-    public String getName(){
-        return this.name;
-    }
-
-    public void setPublisher(String publisher){
-        this.publisher = publisher;
-    }
-    public String getPublisher(){
-        return this.publisher;
-    }
-
-    public void setMinPlayerCount(int minPlayerCount){
-        this.minPlayerCount = minPlayerCount;
-    }
-    public int getMinPlayerCount(){
-        return this.maxPlayerCount = maxPlayerCount;
-    }
-
-    public void setMaxPlayerCount(int maxPlayerCount){
-        this.maxPlayerCount = maxPlayerCount;
-    }
-    public int getMaxPlayerCount(){
-        return this.maxPlayerCount;
-    }
-
-    public void setAvgPlaytime(int avgPlaytime){
-        this.avgPlaytime = avgPlaytime;
-    }
-    public int getAvgPlaytime(){
-        return this.avgPlaytime;
-    }
-
-    //other methods
-    public int realAvgPlaytime(){
-        //TO DO
-        return 0;
-    }
-
-
 }

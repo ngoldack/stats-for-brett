@@ -1,40 +1,32 @@
 package de.ngoldack.statsforbrett.models;
 
-import java.util.ArrayList;
+import lombok.Data;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
+@Data
 public abstract class Match {
-    // instance variables
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(name = "game")
     private Game game;
+    @Column(name = "location")
     private String location;
-    private ArrayList<User> players;
+    @Column(name = "players")
+    private List<User> players;
+    @Column(name = "start_time")
     private Date startTime;
+    @Column(name = "end_time")
     private Date endTime;
-    private HashMap<Integer, ArrayList> scoreboard;
+    private HashMap<Integer, List<User>> scoreboard;
 
-
-    //constructor
-    public Match(int id, Game game, String location, ArrayList<User> players, HashMap<Integer, ArrayList> scoreboard){
-        this.id = id;
-        this.game = game;
-        this.location = location;
-        this.players = players;
-        this.scoreboard = new HashMap<>(scoreboard);
-    }
-
-
-    //methods
-    public Date getDuration(){
-        //return this.endTime - this.startTime;
-    }
-
-    public ArrayList<User> getWinners(){
-        ArrayList<User> winners = new ArrayList<User>();
-        //To Do
-
-
-        return winners;
+    protected Match() {
     }
 }

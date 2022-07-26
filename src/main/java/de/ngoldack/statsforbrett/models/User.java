@@ -1,41 +1,26 @@
 package de.ngoldack.statsforbrett.models;
 
-import java.util.ArrayList;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
+import java.util.List;
+
+@Data
+@NoArgsConstructor
+@Entity(name = "users")
 public class User {
-    //instance variables
-   private String username;
-   private String password;
-   private String email;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private String id;
+    @Column(name = "username", nullable = false, unique = true)
+    private String username;
+    @Column(name = "password")
+    private String password; //TODO password encryption & spring security
+    @Column(name = "email", unique = true)
+    private String email;
 
-   private ArrayList<Game> library = new ArrayList<Game>();
+    @Column(name = "library")
+    private List<Game> library;
 
-   //constructor
-    public User(String username, String password, String email){
-        this.username = username;
-        this.password = password;
-        this.email = email;
-    }
-
-    //methods
-
-    /**
-     * adds a new game to the user's library
-     * @param game
-     */
-    public void addNewGameToLibrary(Game game){
-        this.library.add(game);
-    }
-
-    /**
-     * removes given game from user's library
-     * @param game
-     */
-    public void deleteGameFromLibrary(Game game){
-        this.library.remove(game);
-    }
-
-    public ArrayList<Game> getLibrary(){
-        return this.library;
-    }
 }
