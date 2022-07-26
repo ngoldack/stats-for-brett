@@ -20,6 +20,9 @@ public class HibernateConfig {
     @Bean
     public DataSource getDataSource() {
         var url = System.getenv("DATABASE_URL");
+        if (url == null) {
+            url = "jdbc://localhost:5432/test";
+        }
         if (!System.getenv("DATABASE_URL").contains("jdbc")) {
             url = "jdbc:" + url.replace("postgres", "postgresql");
         }
