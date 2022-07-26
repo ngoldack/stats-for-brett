@@ -23,7 +23,7 @@ public class HibernateConfig {
         if (url == null) {
             url = "jdbc://localhost:5432/test";
         }
-        if (!System.getenv("DATABASE_URL").contains("jdbc")) {
+        if (url.contains("jdbc")) {
             url = "jdbc:" + url.replace("postgres", "postgresql");
         }
 
